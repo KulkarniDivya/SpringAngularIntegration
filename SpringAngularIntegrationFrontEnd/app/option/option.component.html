@@ -1,0 +1,61 @@
+<div class="container">
+  <div *ngIf="id==1">
+    <form  name="depositForm"  [formGroup]="depositForm" (ngSubmit)="depositForm.valid && deposit()">
+      <div class="form-group">
+        <label>Amount <span style="color: red">*</span></label>
+        <input type="number" class="form-control" formControlName="amount"
+          [ngClass]="{'is-invalid': depositForm.get('amount').touched && depositForm.get('amount').invalid}"
+          placeholder="Enter Amount to Deposit">
+        <div class="invalid-feedback">
+          <div>Ammount is Required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!depositForm.valid">Deposit</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="id==2">
+    <form name="withdrawForm" [formGroup]="withdrawForm" (ngSubmit)="withdrawForm.valid && withdraw()">
+      <div class="form-group">
+        <label>Amount <span style="color: red">*</span></label>
+        <input type="number" class="form-control" formControlName="amount"
+          [ngClass]="{'is-invalid': withdrawForm.get('amount').touched && withdrawForm.get('amount').invalid}"
+          placeholder="Enter Amount to Withdraw">
+        <div class="invalid-feedback">
+          <div>Ammount is Required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!withdrawForm.valid">Withdraw</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="id==3">
+    <h1 style="text-align: center">Fill the Registration Form</h1>
+    <form name="transactionForm" [formGroup]="transactionForm" (ngSubmit)="transactionForm.valid && transfer()">
+      <div class="form-group">
+        <label>To Account <span style="color: red">*</span></label>
+        <input type="number" class="form-control" formControlName="toAcc"
+          [ngClass]="{'is-invalid': transactionForm.get('toAcc').touched && transactionForm.get('toAcc').invalid}"
+          placeholder="Enter account no. you want to transfer amount">
+        <div class="invalid-feedback">
+          <div>To Account Number is Required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Amount <span style="color: red">*</span></label>
+        <input type="number" class="form-control" formControlName="amt"
+          [ngClass]="{'is-invalid': transactionForm.get('amt').touched && transactionForm.get('amt').invalid}"
+          placeholder="Enter Amount to Transfer">
+        <div class="invalid-feedback">
+          <div>Ammount is Required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!transactionForm.valid">Transfer</button>
+      </div>
+      <h4 style="color: red; text-align: center">All fields marked with (*) are mandatory</h4>
+    </form>
+  </div>
+</div>
